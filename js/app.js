@@ -4,6 +4,9 @@ var ViewModel = function () {
     this.imgSrc = ko.observable('img/434164568_fea0ad4013_z.jpg');
     this.imgAttribution = ko.observable('https://live.staticflickr.com/4808/44430067970_45d8ea1a96_z.jpg')
     this.level = ko.observable('baby');
+
+
+
     // Computed Observables
     this.fullName = ko.computed(function () {
         return this.name() + " " + this.level();
@@ -16,10 +19,20 @@ var ViewModel = function () {
 
         if (this.clickCount() >= 5 && this.clickCount() < 10) {
             this.level('teen');
-        } else if(this.clickCount() >= 10){
+        } else if (this.clickCount() >= 10) {
             this.level('dragon');
         }
     };
+
+    // Control Flow - 1: Iterating over an array
+    this.nicknames = ko.observableArray([{
+            nickname: 'fluffy'
+        },
+        {
+            nickname: 'tiger'
+        }
+    ]);
+
 }
 
 ko.applyBindings(new ViewModel());
