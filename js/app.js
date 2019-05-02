@@ -1,45 +1,91 @@
+var initialCats = [{
+        clickCount: 0,
+        name: 'Bob',
+        imgSrc: 'img/bob.jpg',
+        imgAttribution: 'normal cat',
+        nicknames: ['fluffy', 'tiger']
+    },
+    {
+        clickCount: 0,
+        name: 'Bruce',
+        imgSrc: 'img/bruce.jpg',
+        imgAttribution: 'crazy cat',
+        nicknames: ['fluffy', 'tiger']
+    },
+    {
+        clickCount: 0,
+        name: 'Hungry',
+        imgSrc: 'img/hungry.jpg',
+        imgAttribution: 'hungry cat',
+        nicknames: ['fluffy', 'tiger']
+    },
+    {
+        clickCount: 0,
+        name: 'Kyra',
+        imgSrc: 'img/kyra.jpg',
+        imgAttribution: 'cute cat',
+        nicknames: ['fluffy', 'tiger']
+    },
+    {
+        clickCount: 0,
+        name: 'Scarlet',
+        imgSrc: 'img/scarlet.jpg',
+        imgAttribution: 'beautiful',
+        nicknames: ['fluffy', 'tiger']
+    }
+]
+
 var Cat = function (data) {
     this.clickCount = ko.observable(data.clickCount);
     this.name = ko.observable(data.name);
     this.imgSrc = ko.observable(data.imgSrc);
     this.imgAttribution = ko.observable(data.imgAttribution);
-    this.level = ko.observable(data.nicknames);
+    this.nicknames = ko.observableArray(data.nicknames);
 
     // Computed Observables
-    this.fullName = ko.computed(function () {
-        if (this.clickCount() >= 5 && this.clickCount() < 10) {
-            this.level('teen');
-        } else if (this.clickCount() >= 10) {
-            this.level('dragon');
+    this.title = ko.computed(function () {
+        var title;
+        var clicks = this.clickCount();
+        if (clicks < 5) {
+            title = 'newborn';
+        } else if (clicks > 5 && clicks <= 10) {
+            title = 'teen';
+        } else if (clicks > 10) {
+            title = 'dragon';
         }
-        return this.name() + " " + this.level();
+        return title;
     }, this);
-
-    // Control Flow - 1: Iterating over an array
-    this.nicknames = ko.observableArray([{
-            nickname: 'fluffy'
-        },
-        {
-            nickname: 'tiger'
-        }
-    ]);
 };
 
-
+// Make The CurrentCat change when you click on a cat in the list in a function
 var ViewModel = function () {
+    var self = this; // Always maps to the viewModel
 
-    this.currentCat = ko.observable(new Cat({
-        clickCount: 0,
-        name: 'Tabby',
-        imgSrc: 'img/434164568_fea0ad4013_z.jpg',
-        imgAttribution: 'https://live.staticflickr.com/4808/44430067970_45d8ea1a96_z.jpg',
-        nicknames: ['fluffy', 'tiger']
-    }));
+    // This is another Context
+    this.catList = ko.observableArray([]);
+
+    initialCats.forEach(function (catItem) {
+        // Push each one of the cats as catItem inside initialCats
+        self.catList.push(new Cat(catItem));
+    });
+
+    // This is One Context
+    this.currentCat = ko.observable(this.catList()[0]);
 
     this.incrementCounter = function () {
         // Set the ClickCount
         // knockout will handle the view to model and movel to view synchronization
-        this.clickCount(this.clickCount() + 1);
+        self.currentCat().clickCount(self.currentCat().clickCount() + 1);
+    };
+
+    // ClickChangeCat Function
+    this.changeCat = function(data, event) {
+        self.catList().forEach(function(catItem) {
+            // console.log('catItem: ', catItem.name())
+            if(catItem.name() == event.target.innerText){
+                self.currentCat(catItem);
+            }
+        })
     };
 };
 

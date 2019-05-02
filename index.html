@@ -3,27 +3,36 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css" />
     <title>Cat Clicker</title>
 </head>
 
 <body>
-    <ul id="cat-list"></ul>
-    <div data-bind="with:currentCat">
+    <div data-bind="using: catList">
+        <ul data-bind="foreach: catList">
+            <li class="enlisted-cat" data-bind="text: name, click: $parent.changeCat"></li>
+        </ul>
+    </div>
+
+    <div data-bind="with: currentCat">
         <!-- 
             This bindings are connecting up the view and the model, 
             and Knockout is hangling all the logic to the synchronization
         -->
-        <h2 data-bind="text: fullName"></h2>
 
+        <h1 data-bind="text: name"></h1>
+        <h2 data-bind="text: title"></h2>
         <div data-bind="text: clickCount"></div>
         <img src="" alt="cute cat" data-bind="click: $parent.incrementCounter, 
         attr: {src: imgSrc}">
+
         <h3> Nicknames</h3>
         <ul data-bind="foreach: nicknames">
             <li>
-                <b data-bind="text: nickname"></b>
+                <b data-bind="text: $data"></b>
             </li>
         </ul>
+        
     </div>
     <script src="js/lib/knockout-3.2.0.js"></script>
     <script src="js/app.js"></script>
