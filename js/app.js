@@ -77,7 +77,7 @@ var ViewModel = function () {
         // knockout will handle the view to model and movel to view synchronization
         self.currentCat().clickCount(self.currentCat().clickCount() + 1);
     };
-
+    // https://stackoverflow.com/questions/39939504/knockout-how-to-get-a-buttons-text-value
     // ClickChangeCat Function
     this.changeCat = function(data, event) {
         self.catList().forEach(function(catItem) {
