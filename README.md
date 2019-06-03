@@ -1,6 +1,6 @@
 # Udacity-CatClicker-Knockout
 
-The website is being hosted at: [nicklobo](http://nicklobo.com.br/catclicker-knockout/index.html)
+The website is being hosted at: [nicklobo/catclicker-knockout](http://nicklobo.com.br/catclicker-knockout/index.html)
 
 # What it is
 Client-side Dynamic Website code to show my frontend skills, understanding of MV* patterns, organizational libraries, CSS styling
