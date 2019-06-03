@@ -1,0 +1,34 @@
+img {
+    max-width: 420px;
+}
+
+.enlisted-cat {
+    max-width: 50%;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.enlisted-cat:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    transition-duration: 2000ms;
+    border-bottom: 5px groove #2CABFF;
+}
+
+canvas{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index: -1;
+    height: 100%;
+}
+
+li {
+    font-size: 25px;
+    line-height: 1.75;
+    text-align: center;
+}
+
+#cat-name {
+    width: 150px;
+}
+

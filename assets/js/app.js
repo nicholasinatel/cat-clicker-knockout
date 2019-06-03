@@ -1,35 +1,35 @@
 var initialCats = [{
         clickCount: 0,
         name: 'Bob',
-        imgSrc: 'img/bob.jpg',
+        imgSrc: 'assets/img/bob.jpg',
         imgAttribution: 'normal cat',
         nicknames: ['fluffy', 'tiger']
     },
     {
         clickCount: 0,
         name: 'Bruce',
-        imgSrc: 'img/bruce.jpg',
+        imgSrc: 'assets/img/bruce.jpg',
         imgAttribution: 'crazy cat',
         nicknames: ['fluffy', 'tiger']
     },
     {
         clickCount: 0,
         name: 'Hungry',
-        imgSrc: 'img/hungry.jpg',
+        imgSrc: 'assets/img/hungry.jpg',
         imgAttribution: 'hungry cat',
         nicknames: ['fluffy', 'tiger']
     },
     {
         clickCount: 0,
         name: 'Kyra',
-        imgSrc: 'img/kyra.jpg',
+        imgSrc: 'assets/img/kyra.jpg',
         imgAttribution: 'cute cat',
         nicknames: ['fluffy', 'tiger']
     },
     {
         clickCount: 0,
         name: 'Scarlet',
-        imgSrc: 'img/scarlet.jpg',
+        imgSrc: 'assets/img/scarlet.jpg',
         imgAttribution: 'beautiful',
         nicknames: ['fluffy', 'tiger']
     }

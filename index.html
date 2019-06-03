@@ -2,40 +2,82 @@
 <html lang="en">
 
 <head>
+    <title>Cat Clicker Knockout Js</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="main.css" />
-    <title>Cat Clicker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <!-- My Styling-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!-- Custom styles for this template -->
+    <link href="assets/css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
-    <div data-bind="using: catList">
-        <ul data-bind="foreach: catList">
-            <li class="enlisted-cat" data-bind="text: name, click: $parent.changeCat"></li>
-        </ul>
-    </div>
+    <header>
+        <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-sm-3 col-md-3 mr-0" href="http://nicklobo.com.br/">Nicholas Lobo</a>
+        </nav>
+    </header>
+    <!-- Main Page -->
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- SideBar -->
+                <nav class="col-md-3 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <canvas id="canvas"></canvas>
+                        <div data-bind="using: catList">
+                            <ul data-bind="foreach: catList" class="nav flex-column">
+                                <li class="enlisted-cat nav-item" data-bind="text: name, click: $parent.changeCat"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Main Window -->
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-9 px-4">
 
-    <div data-bind="with: currentCat">
-        <!-- 
-            This bindings are connecting up the view and the model, 
-            and Knockout is hangling all the logic to the synchronization
-        -->
+                    <div
+                        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1>Cat Clicker Knockout.JS- Dashboard</h1>
+                    </div>
 
-        <h1 data-bind="text: name"></h1>
-        <h2 data-bind="text: title"></h2>
-        <div data-bind="text: clickCount"></div>
-        <img src="" alt="cute cat" data-bind="click: $parent.incrementCounter, 
-        attr: {src: imgSrc}">
+                    <div id="cat" data-bind="with: currentCat">
+                        <!-- This bindings are connecting up the view and the model, 
+                                and Knockout is hangling all the logic to the synchronization -->
+                        <h1 id="cat-name" data-bind="text: name"></h1>
 
-        <h3> Nicknames</h3>
-        <ul data-bind="foreach: nicknames">
-            <li>
-                <b data-bind="text: $data"></b>
-            </li>
-        </ul>
-        
-    </div>
-    <script src="js/lib/knockout-3.2.0.js"></script>
-    <script src="js/app.js"></script>
+                        <img src="" alt="cute cat" data-bind="click: $parent.incrementCounter, 
+                            attr: {src: imgSrc}">
+                        <div>
+                            <h2 id="cat-name" class="btn-dark btn" data-bind="text: title"></h2>
+                            <div class="btn btn-dark" id="cat-count" data-bind="text: clickCount"></div>
+                        </div>
+
+                        <h3> Nicknames</h3>
+                        <ul data-bind="foreach: nicknames">
+                            <li>
+                                <b data-bind="text: $data"></b>
+                            </li>
+                        </ul>
+
+                    </div>
+                </main>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/lib/knockout-3.2.0.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+    <script src="assets/js/canvas.js"></script>
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>
